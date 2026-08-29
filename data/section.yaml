@@ -1,0 +1,52 @@
+# ---------------------------------------------------------------------------
+# Section definition — Vadodara Jn (BRC) -- Surat (ST)
+# Western Railway, Delhi--Mumbai trunk route. Double line, fully electrified,
+# mixed passenger + heavy freight. ~129 route-km, 13 stations.
+#
+# Station codes, names and chainage are REAL (public: IR time-tables, OSM).
+# `loop` / `platforms` are ASSUMPTIONS where OSM/public data is incomplete --
+# see DATA.md. Readme rule: crossing loops at every 2nd-3rd station.
+# ---------------------------------------------------------------------------
+section:
+  id: BRC-ST
+  name: Vadodara Jn - Surat
+  zone: WR
+  division: Vadodara / Mumbai Central
+  lines: [UP, DN]          # UP = towards Delhi (increasing km here = towards ST)
+  electrified: true
+  gmt: 55.0                # gross million tonnes/yr -- trunk route, high density
+  route_class: A           # IRPWM route classification (sectional speed >= 130)
+  sectional_speed_kmph: 130
+  headway_min: 6           # minimum train separation used for occupancy padding
+
+stations:
+  - {code: BRC,  name: Vadodara Jn,        km: 0,   loop: true,  platforms: 7}
+  - {code: MKPR, name: Makarpura,          km: 6,   loop: true,  platforms: 3}
+  - {code: VRA,  name: Varnama,            km: 13,  loop: false, platforms: 2}
+  - {code: ITL,  name: Itola,              km: 20,  loop: true,  platforms: 2}
+  - {code: MYG,  name: Miyagam Karjan,     km: 33,  loop: true,  platforms: 3}
+  - {code: PLJ,  name: Palej,              km: 46,  loop: false, platforms: 2}
+  - {code: BH,   name: Bharuch Jn,         km: 70,  loop: true,  platforms: 4}
+  - {code: ANK,  name: Ankleshwar Jn,      km: 80,  loop: true,  platforms: 3}
+  - {code: KSB,  name: Kosamba Jn,         km: 95,  loop: false, platforms: 2}
+  - {code: KIM,  name: Kim,                km: 104, loop: true,  platforms: 3}
+  - {code: SYN,  name: Sayan,              km: 116, loop: false, platforms: 2}
+  - {code: UTN,  name: Utran,              km: 124, loop: true,  platforms: 2}
+  - {code: ST,   name: Surat,              km: 129, loop: true,  platforms: 4}
+
+planning:
+  horizon_days: 7
+  day_zero: "2026-03-02"   # a Monday
+  block_buffer_min: 10     # safety buffer each side of every block (readme B1.2)
+  max_block_hours_per_day: 8.0
+  daylight_window: [6, 18] # hours; some activities are daylight-only
+  # Railway Board policy: a fixed daily maintenance corridor on trunk routes.
+  # We do NOT fix the hour -- ingest/corridor.py picks the window and the span
+  # that displace the least traffic, per day, and the timetable is threaded
+  # around the result. Set enabled:false to see what the plan looks like
+  # without the policy (short USFD work only -- see the README).
+  corridor_block:
+    enabled: true
+    duration_min: 210        # 3.5 h: a 3 h tamping block plus buffers
+    n_stretches: 4           # contiguous inter-station stretches, ~25-45 km
+    step_min: 30             # placement search granularity

@@ -1,0 +1,19 @@
+# Everything below is actually imported. Nothing is listed "just in case" --
+# an unused dependency is a thing that can break your install on demo morning.
+
+ortools>=9.10          # CP-SAT: the optimisation core
+numpy>=1.26            # KPI aggregation, degradation model features
+scikit-learn>=1.4      # GradientBoostingRegressor degradation surrogate
+pyyaml>=6.0            # data/section.yaml, data/norms.yaml
+
+fastapi>=0.110         # API
+uvicorn[standard]>=0.29
+
+pytest>=8.0            # tests/
+
+# The UI has no dependencies at all -- hand-drawn SVG, no npm, no build step.
+
+# Optional, not imported by the pipeline:
+#   osmnx        only if you fetch live OpenStreetMap topology
+#                (ingest/network.fetch_osm_topology uses urllib, not osmnx)
+#   matplotlib   only if you want to plot experiment output yourself

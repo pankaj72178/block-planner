@@ -1,0 +1,59 @@
+== building world ==========================================================
+  section          : Vadodara Jn - Surat (13 stations, 24 blockable stretches)
+  traffic          : 66.1 trains/day (36.3% simulated freight), 0 headway conflicts
+  timetable repair : 114 trains re-threaded, mean 27.2 min, 17 unthreadable
+  degradation model: MAE 19.6 d vs naive 77.3 d (3.94x better), R2 0.902
+  demand           : 200 jobs (200 overdue), 589.7 block-h demanded vs 56.0 h tolerance (10.5x oversubscribed)
+  NOTE             : 86 lower-priority jobs were dropped by the candidate cap (max priority dropped 5.6)
+
+== planning ================================================================
+  Manual practice, no corridor        29 blocks  [HEURISTIC 0.0s gap 0.0%]  feasible
+  CP-SAT, no corridor                 32 blocks  [FEASIBLE 25.0s gap 1.3%]  feasible
+      140 of 200 jobs have NO feasible window anywhere this week inside the published timetable
+
+  auto-placed corridor: 24.5 h reserved across 7 windows
+      D1 UP BRC-MYG    km 0-33     11:00-14:30  2 trains re-timetabled
+      D2 DN BRC-MYG    km 0-33     12:00-15:30  2 trains re-timetabled
+      D3 DN KSB-ST     km 95-129   13:00-16:30  4 trains re-timetabled
+      D4 DN MKPR-PLJ   km 6-46     12:00-15:30  3 trains re-timetabled
+      D5 DN ANK-UTN    km 80-124   12:00-15:30  4 trains re-timetabled
+      D6 UP KSB-ST     km 95-129   12:30-16:00  2 trains re-timetabled
+      D7 DN VRA-BH     km 13-70    23:30-03:00  1 trains re-timetabled
+
+  Manual practice + auto-corridor     23 blocks  [HEURISTIC 0.0s gap 0.0%]  feasible
+  CP-SAT + auto-corridor              22 blocks  [OPTIMAL 5.9s gap 0.0%]  feasible
+  CP-SAT + corridor + retiming        23 blocks  [FEASIBLE 50.0s gap 12.4%]  feasible
+      F0158#6       +14 min
+      F0161#6       +14 min
+      F0163#6       +14 min
+
+== simulation (8 block-burst replications, means) =========================
+metric                            Manual practice, no co     CP-SAT, no corridor  Manual practice + auto  CP-SAT + auto-corridor  CP-SAT + corridor + re
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+jobs_completed                                      29.0                    32.0                    23.0                   21.75                    22.5
+urgent_jobs_completed                                0.0                     2.0                     6.0                    5.88                    5.75
+availability_km_equivalent                          10.4                    14.4                    19.6                   19.88                   19.55
+overdue_km_days_cleared                             32.0                    47.4                    63.9                    75.0                    73.6
+aai_with_plan                                     0.7316                  0.7339                  0.7363                  0.7379                  0.7377
+asset_km_maintained                                124.0                   134.0                    80.0                   70.62                   70.25
+block_hours_granted                                 47.8                    54.0                    52.5                    54.3                    55.2
+mean_added_delay_passenger_min                    0.1988                   0.305                   0.015                  0.4188                  0.1775
+max_added_delay_min                                 34.5                   58.75                    9.88                   60.25                   48.12
+worst_p95_delay_min                                  0.0                     0.0                     0.0                     0.0                     0.0
+punctuality_passenger_pct                          99.49                   99.33                   99.96                   99.32                   99.66
+mean_added_delay_freight_min                        0.31                   0.365                  0.0737                  0.5312                    0.71
+block_bursts                                         9.0                    9.38                    5.25                     6.5                     6.5
+trains_retimed                                       0.0                     0.0                     0.0                     0.0                     3.0
+
+== headline ================================================================
+  overdue asset-km-days recovered  : 32.0  ->  75.0   (2.34x)
+  availability-equivalent track    : 10.4 km  ->  19.88 km
+  Asset Availability Index         : 0.7269 (do nothing)  ->  0.7316 (manual)  ->  0.7379 (planned)
+  cost, passenger punctuality      : 99.49%  ->  99.32%  (mean +0.4188 min)
+  cost, goods                      : mean +0.5312 min, 0.0 paths deliberately regulated
+  best plan                        : CP-SAT + auto-corridor
+  NOTE: Level 2 retiming and Level 1 differ by 1.4 km-days here -- inside the burst simulation's noise band. Once the corridor is placed well, retiming has little left to unlock on this section.
+
+  wrote /Users/panka/Desktop/SIH-2026 Project/block-planner/out/results.json
+  wrote /Users/panka/Desktop/SIH-2026 Project/block-planner/out/block_plan.csv
+  wrote /Users/panka/Desktop/SIH-2026 Project/block-planner/out/ui_data.json   (open ui/index.html or run: python -m api.main)

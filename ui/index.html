@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Block Planner — Vadodara–Surat</title>
+<link rel="stylesheet" href="/style.css?v=__V__">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <h1>AI Block Planner</h1>
+    <p id="sectionline">loading section…</p>
+  </div>
+  <div class="kpis" id="kpis"></div>
+</header>
+
+<nav class="toolbar">
+  <div class="grp">
+    <label>Plan</label>
+    <div class="seg" id="planSel"></div>
+  </div>
+  <div class="grp">
+    <label>Day</label>
+    <div class="seg" id="daySel"></div>
+  </div>
+  <div class="grp">
+    <label>Line</label>
+    <div class="seg" id="lineSel"></div>
+  </div>
+  <div class="grp grow">
+    <label>Show</label>
+    <div class="seg" id="showSel"></div>
+  </div>
+  <div class="grp">
+    <label>&nbsp;</label>
+    <button id="scenarioBtn" class="ghost">Scenarios ▾</button>
+  </div>
+</nav>
+
+<section class="scenario" id="scenario" hidden>
+  <div class="row">
+    <label>Traffic <b id="trafficVal">1.00×</b>
+      <input type="range" id="traffic" min="1" max="1.4" step="0.05" value="1"></label>
+    <label>Operations tolerance <b id="hoursVal">8.0 h/day</b>
+      <input type="range" id="hours" min="3" max="16" step="0.5" value="8"></label>
+    <label>Solver budget <b id="tlVal">15 s</b>
+      <input type="range" id="tl" min="5" max="60" step="5" value="15"></label>
+  </div>
+  <div class="row">
+    <label class="inline"><input type="checkbox" id="corridor" checked>
+      Auto-placed corridor blocks</label>
+    <label class="inline"><input type="checkbox" id="retiming" checked>
+      Allow goods retiming (Level 2)</label>
+    <span class="machines" id="machineToggles"></span>
+    <button id="replanBtn" class="primary">Re-optimise</button>
+    <span id="status" class="status"></span>
+  </div>
+</section>
+
+<main>
+  <div class="panel">
+    <div class="panel-head">
+      <h2>Time–distance chart</h2>
+      <span class="hint">distance down the page, time across — trains are the
+        diagonals, maintenance blocks are the shaded boxes</span>
+    </div>
+    <div class="chartwrap"><svg id="tdchart"></svg></div>
+    <div class="legend" id="legend"></div>
+  </div>
+
+  <div class="split">
+    <div class="panel">
+      <div class="panel-head"><h2>Machine utilisation</h2>
+        <span class="hint">whole planning week</span></div>
+      <div class="chartwrap"><svg id="gantt"></svg></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h2>Greedy vs optimised</h2>
+        <span class="hint">same data, same constraints, different planner</span></div>
+      <div class="tablewrap"><table id="cmp"></table></div>
+    </div>
+  </div>
+
+  <div class="panel" id="retimePanel" hidden>
+    <div class="panel-head"><h2>Goods paths regulated</h2>
+      <span class="hint">what Level 2 moved, and what it bought</span></div>
+    <div class="tablewrap"><table id="retimeTbl"></table></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head"><h2>Real vs simulated</h2>
+      <span class="hint">every layer, labelled — nothing here is presented as
+        data we do not have</span></div>
+    <div class="tablewrap"><table id="provenance"></table></div>
+  </div>
+</main>
+
+<div id="tip" class="tip" hidden></div>
+<script src="/app.js?v=__V__"></script>
+</body>
+</html>

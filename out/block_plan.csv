@@ -1,0 +1,24 @@
+job_id,activity,stretch,line,km_from,km_to,machine,start,end,duration_min,priority
+J0035,Plain-track through tamping,KIM-SYN/UP,UP,107.0,110.0,CSM-2,D1 09:32,D1 12:32,180,8.2
+J0112,Ultrasonic flaw detection (rail testing),PLJ-BH/UP,UP,53.0,59.0,USFD_TROLLEY-2,D1 10:23,D1 12:13,110,8.55
+J0011,Plain-track through tamping,MYG-PLJ/UP,UP,34.0,37.0,CSM-1,D1 10:31,D1 13:41,190,8.2
+J0133,Ultrasonic flaw detection (rail testing),MYG-PLJ/DN,DN,33.0,39.0,USFD_TROLLEY-1,D2 12:07,D2 13:57,110,8.25
+J0059,Plain-track through tamping,PLJ-BH/DN,DN,61.0,64.0,CSM-1,D2 12:36,D2 15:36,180,8.2
+J0075,Plain-track through tamping,UTN-ST/DN,DN,124.0,127.0,CSM-2,D2 13:48,D2 16:53,185,8.2
+J0045,Plain-track through tamping,MKPR-VRA/DN,DN,6.0,8.0,CSM-1,D3 10:44,D3 13:49,185,8.2
+J0115,Ultrasonic flaw detection (rail testing),BH-ANK/UP,UP,71.0,78.0,USFD_TROLLEY-1,D3 11:01,D3 12:51,110,8.25
+J0065,Plain-track through tamping,ANK-KSB/DN,DN,80.0,88.0,CSM-2,D3 13:34,D3 16:34,180,8.2
+J0126,Ultrasonic flaw detection (rail testing),BRC-MKPR/DN,DN,0.0,6.0,USFD_TROLLEY-1,D4 10:57,D4 12:37,100,7.9
+J0263,OHE inspection & maintenance (power + traffic block),ITL-MYG/DN,DN,24.0,30.0,OHE_TOWER-2,D4 11:27,D4 14:22,175,6.2
+J0285,Points & crossings overhaul (station yards),MYG-PLJ/DN,DN,45.0,46.0,GANG-1,D4 11:41,D4 15:06,205,5.7
+J0141,Ultrasonic flaw detection (rail testing),BH-ANK/DN,DN,77.0,80.0,USFD_TROLLEY-2,D5 11:02,D5 12:27,85,7.45
+J0192,LWR destressing / weld renewal,ANK-KSB/DN,DN,89.0,90.0,GANG-3,D5 11:15,D5 14:30,195,6.9
+J0273,OHE inspection & maintenance (power + traffic block),SYN-UTN/DN,DN,116.0,121.0,OHE_TOWER-1,D5 11:34,D5 14:54,200,6.35
+J0138,Ultrasonic flaw detection (rail testing),PLJ-BH/DN,DN,58.0,64.0,USFD_TROLLEY-1,D6 10:50,D6 12:35,105,8.4
+J0172,LWR destressing / weld renewal,KSB-KIM/UP,UP,97.0,98.0,GANG-2,D6 12:17,D6 15:22,185,5.7
+J0161,LWR destressing / weld renewal,PLJ-BH/UP,UP,46.0,47.0,GANG-4,D6 13:15,D6 16:25,190,6.9
+J0124,Ultrasonic flaw detection (rail testing),SYN-UTN/UP,UP,122.0,124.0,USFD_TROLLEY-3,D7 09:36,D7 10:56,80,6.35
+J0120,Ultrasonic flaw detection (rail testing),KSB-KIM/UP,UP,95.0,103.0,USFD_TROLLEY-1,D7 09:38,D7 11:23,105,7.7
+J0114,Ultrasonic flaw detection (rail testing),PLJ-BH/UP,UP,66.0,70.0,USFD_TROLLEY-2,D7 10:24,D7 11:54,90,8.05
+J0105,Ultrasonic flaw detection (rail testing),VRA-ITL/UP,UP,13.0,19.0,USFD_TROLLEY-3,D7 11:16,D7 12:51,95,7.8
+J0104,Ultrasonic flaw detection (rail testing),MKPR-VRA/UP,UP,12.0,13.0,USFD_TROLLEY-1,D7 11:43,D7 12:58,75,8.2

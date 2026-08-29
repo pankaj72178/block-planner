@@ -1,0 +1,154 @@
+# ---------------------------------------------------------------------------
+# norms.yaml -- maintenance periodicities and block requirements
+#
+# PROVENANCE: derived from the Indian Railways Permanent Way Manual (IRPWM,
+# public PDF) and the IR Works/AC Traction manuals. IRPWM states periodicities
+# in mixed units (calendar, GMT passed, route class). We normalise everything
+# to *days* and *cumulative GMT* here so the demand generator can use one clock.
+#
+# Every number below is an ASSUMPTION CALIBRATED TO A PUBLISHED NORM, not a
+# reading from any internal IR system. That distinction is the whole
+# credibility argument -- keep it in the repo, on the slide, and in the demo.
+# ---------------------------------------------------------------------------
+
+activities:
+
+  tamping:
+    label: Plain-track through tamping
+    machine: CSM
+    # IRPWM ties tamping cycle to traffic density (GMT/yr). Bands below.
+    periodicity_days_by_gmt:
+      - {gmt_min: 40, days: 180}
+      - {gmt_min: 20, days: 270}
+      - {gmt_min: 0,  days: 365}
+    block_minutes: [110, 170]     # a standard ~3 h corridor block, less buffers
+    daylight_only: false
+    output_km_per_block: 1.5      # a CSM covers ~1.5 track-km in that block
+    availability_value_per_km: 1.0
+    base_priority: 6
+
+  deep_screening:
+    label: Ballast deep screening
+    machine: BCM
+    periodicity_days_by_gmt:
+      - {gmt_min: 40, days: 2920}   # ~8 yr on heavy-density routes
+      - {gmt_min: 20, days: 3650}
+      - {gmt_min: 0,  days: 4380}
+    cumulative_gmt_trigger: 500     # IRPWM alternative trigger
+    block_minutes: [240, 360]       # 4-6 h
+    daylight_only: false
+    output_km_per_block: 0.5
+    availability_value_per_km: 1.2
+    base_priority: 8
+
+  usfd:
+    label: Ultrasonic flaw detection (rail testing)
+    machine: USFD_TROLLEY
+    periodicity_days_by_gmt:
+      - {gmt_min: 40, days: 30}
+      - {gmt_min: 20, days: 45}
+      - {gmt_min: 0,  days: 60}
+    block_minutes: [45, 90]         # trolley works in gaps / short blocks
+    daylight_only: true             # trolley testing is a daylight activity
+    output_km_per_block: 6.0
+    availability_value_per_km: 0.08   # Testing FINDS defects; it does not
+                                      # restore anything. Geometry work is what
+                                      # lifts speed restrictions, so that is
+                                      # what carries availability value here.
+                                      # USFD still gets done -- it is mandated
+                                      # by its outturn target and carries the
+                                      # highest base priority in the manual --
+                                      # but it is not allowed to win an
+                                      # availability trade-off it does not
+                                      # actually win. Set this to 0.25 and the
+                                      # optimiser correctly spends the entire
+                                      # week on ultrasonic testing.
+    base_priority: 9                # safety-critical: rail fracture prevention
+
+  destressing:
+    label: LWR destressing / weld renewal
+    machine: GANG
+    periodicity_days_by_gmt:
+      - {gmt_min: 0, days: 365}     # annual, pre-summer
+    block_minutes: [90, 180]        # 1.5-3 h
+    daylight_only: true
+    output_km_per_block: 1.0
+    availability_value_per_km: 0.6
+    base_priority: 7
+
+  rail_grinding:
+    label: Rail grinding
+    machine: RGM
+    periodicity_days_by_gmt:
+      - {gmt_min: 40, days: 730}
+      - {gmt_min: 0,  days: 1095}
+    cumulative_gmt_trigger: 40
+    block_minutes: [180, 240]
+    daylight_only: false
+    output_km_per_block: 4.0
+    availability_value_per_km: 0.4
+    base_priority: 5
+
+  ohe_maintenance:
+    label: OHE inspection & maintenance (power + traffic block)
+    machine: OHE_TOWER
+    periodicity_days_by_gmt:
+      - {gmt_min: 0, days: 90}      # quarterly OHE attention
+    block_minutes: [120, 180]       # 2-3 h power + traffic block
+    daylight_only: true
+    needs_power_block: true
+    output_km_per_block: 3.0
+    availability_value_per_km: 0.3
+    base_priority: 6
+
+  points_crossings:
+    label: Points & crossings overhaul (station yards)
+    machine: GANG
+    periodicity_days_by_gmt:
+      - {gmt_min: 0, days: 180}
+    block_minutes: [120, 200]
+    daylight_only: true
+    station_yard_only: true
+    output_km_per_block: 0.3
+    availability_value_per_km: 0.9
+    base_priority: 7
+
+# Machine fleet available to the section (divisional allotment).
+# ASSUMPTION: typical allotment for one section of a busy division.
+machines:
+  CSM:          {units: 2, reposition_buffer_min: 45, label: Tamping machine (CSM)}
+  BCM:          {units: 1, reposition_buffer_min: 90, label: Ballast cleaning machine}
+  USFD_TROLLEY: {units: 3, reposition_buffer_min: 20, label: USFD trolley}
+  GANG:         {units: 4, reposition_buffer_min: 30, label: P-Way gang}
+  RGM:          {units: 1, reposition_buffer_min: 90, label: Rail grinding machine}
+  OHE_TOWER:    {units: 2, reposition_buffer_min: 40, label: OHE tower wagon}
+
+# Divisional MACHINE OUTTURN TARGETS -- minimum blocks each machine unit is
+# expected to deliver in the planning week. IR divisions are measured on
+# machine outturn (km tamped, km screened) as well as on punctuality, and a
+# block plan that quietly spends the whole week on the cheapest activity would
+# be rejected by the Sr.DEN before it reached the control office.
+#
+# Sized to consume roughly two thirds of the operations tolerance, leaving the
+# optimiser real freedom over the remainder. BCM and RGM are set to 0: ballast
+# screening and rail grinding need mega-blocks longer than a daily corridor,
+# and pretending otherwise would be the dishonest kind of feasible.
+outturn_targets:
+  CSM: 2
+  BCM: 0
+  USFD_TROLLEY: 2
+  GANG: 1
+  RGM: 0
+  OHE_TOWER: 1
+
+# Asset-condition model (see assets/degradation.py)
+tgi:
+  initial_after_tamping: 92.0
+  intervention_threshold: 65.0   # below this, tamping demand is raised
+  urgent_threshold: 55.0
+  base_decay_per_day: 0.045      # per day; calibrated so a GMT-55 segment reaches
+                                 # the intervention threshold near the IRPWM
+                                 # tamping periodicity (~180-270 d). See DATA.md.
+  monsoon_months: [6, 7, 8, 9]
+  monsoon_shock_prob: 0.004      # per segment per day during monsoon
+  monsoon_shock_size: [3.0, 9.0]

@@ -1,0 +1,311 @@
+[
+ {
+  "label": "manual/no-corr",
+  "history": [
+   {
+    "week": 0,
+    "done_this_week": 0.0,
+    "overdue_weighted_km": 258.8,
+    "mean_tgi": 70.05,
+    "segments_below_threshold": 76,
+    "segments_urgent": 24
+   },
+   {
+    "week": 1,
+    "blocks": 29,
+    "done_this_week": 10.7,
+    "overdue_weighted_km": 264.7,
+    "mean_tgi": 69.31,
+    "segments_below_threshold": 81,
+    "segments_urgent": 28
+   },
+   {
+    "week": 2,
+    "blocks": 20,
+    "done_this_week": 7.7,
+    "overdue_weighted_km": 274.4,
+    "mean_tgi": 68.58,
+    "segments_below_threshold": 90,
+    "segments_urgent": 29
+   },
+   {
+    "week": 3,
+    "blocks": 7,
+    "done_this_week": 5.7,
+    "overdue_weighted_km": 286.0,
+    "mean_tgi": 68.36,
+    "segments_below_threshold": 92,
+    "segments_urgent": 29
+   },
+   {
+    "week": 4,
+    "blocks": 9,
+    "done_this_week": 6.5,
+    "overdue_weighted_km": 311.5,
+    "mean_tgi": 68.12,
+    "segments_below_threshold": 95,
+    "segments_urgent": 34
+   },
+   {
+    "week": 5,
+    "blocks": 5,
+    "done_this_week": 4.0,
+    "overdue_weighted_km": 339.7,
+    "mean_tgi": 67.66,
+    "segments_below_threshold": 99,
+    "segments_urgent": 35
+   },
+   {
+    "week": 6,
+    "blocks": 4,
+    "done_this_week": 3.4,
+    "overdue_weighted_km": 371.4,
+    "mean_tgi": 67.12,
+    "segments_below_threshold": 105,
+    "segments_urgent": 39
+   },
+   {
+    "week": 7,
+    "blocks": 20,
+    "done_this_week": 8.8,
+    "overdue_weighted_km": 387.7,
+    "mean_tgi": 66.62,
+    "segments_below_threshold": 107,
+    "segments_urgent": 43
+   },
+   {
+    "week": 8,
+    "blocks": 9,
+    "done_this_week": 5.2,
+    "overdue_weighted_km": 409.8,
+    "mean_tgi": 66.14,
+    "segments_below_threshold": 111,
+    "segments_urgent": 47
+   },
+   {
+    "week": 9,
+    "blocks": 12,
+    "done_this_week": 5.3,
+    "overdue_weighted_km": 426.9,
+    "mean_tgi": 65.54,
+    "segments_below_threshold": 111,
+    "segments_urgent": 50
+   },
+   {
+    "week": 10,
+    "blocks": 5,
+    "done_this_week": 2.5,
+    "overdue_weighted_km": 447.2,
+    "mean_tgi": 64.8,
+    "segments_below_threshold": 118,
+    "segments_urgent": 53
+   }
+  ]
+ },
+ {
+  "label": "manual+corr",
+  "history": [
+   {
+    "week": 0,
+    "done_this_week": 0.0,
+    "overdue_weighted_km": 258.8,
+    "mean_tgi": 70.05,
+    "segments_below_threshold": 76,
+    "segments_urgent": 24
+   },
+   {
+    "week": 1,
+    "blocks": 25,
+    "done_this_week": 19.1,
+    "overdue_weighted_km": 257.1,
+    "mean_tgi": 71.1,
+    "segments_below_threshold": 70,
+    "segments_urgent": 21
+   },
+   {
+    "week": 2,
+    "blocks": 19,
+    "done_this_week": 15.7,
+    "overdue_weighted_km": 258.8,
+    "mean_tgi": 71.73,
+    "segments_below_threshold": 72,
+    "segments_urgent": 17
+   },
+   {
+    "week": 3,
+    "blocks": 22,
+    "done_this_week": 18.0,
+    "overdue_weighted_km": 259.2,
+    "mean_tgi": 72.63,
+    "segments_below_threshold": 69,
+    "segments_urgent": 12
+   },
+   {
+    "week": 4,
+    "blocks": 20,
+    "done_this_week": 13.8,
+    "overdue_weighted_km": 274.8,
+    "mean_tgi": 72.73,
+    "segments_below_threshold": 68,
+    "segments_urgent": 16
+   },
+   {
+    "week": 5,
+    "blocks": 19,
+    "done_this_week": 20.0,
+    "overdue_weighted_km": 283.2,
+    "mean_tgi": 73.83,
+    "segments_below_threshold": 63,
+    "segments_urgent": 12
+   },
+   {
+    "week": 6,
+    "blocks": 18,
+    "done_this_week": 14.2,
+    "overdue_weighted_km": 301.5,
+    "mean_tgi": 74.11,
+    "segments_below_threshold": 63,
+    "segments_urgent": 10
+   },
+   {
+    "week": 7,
+    "blocks": 18,
+    "done_this_week": 17.5,
+    "overdue_weighted_km": 310.7,
+    "mean_tgi": 74.89,
+    "segments_below_threshold": 57,
+    "segments_urgent": 6
+   },
+   {
+    "week": 8,
+    "blocks": 20,
+    "done_this_week": 15.6,
+    "overdue_weighted_km": 326.2,
+    "mean_tgi": 75.4,
+    "segments_below_threshold": 54,
+    "segments_urgent": 5
+   },
+   {
+    "week": 9,
+    "blocks": 18,
+    "done_this_week": 16.5,
+    "overdue_weighted_km": 332.3,
+    "mean_tgi": 76.0,
+    "segments_below_threshold": 47,
+    "segments_urgent": 2
+   },
+   {
+    "week": 10,
+    "blocks": 17,
+    "done_this_week": 16.1,
+    "overdue_weighted_km": 340.7,
+    "mean_tgi": 76.43,
+    "segments_below_threshold": 48,
+    "segments_urgent": 0
+   }
+  ]
+ },
+ {
+  "label": "cpsat+corr",
+  "history": [
+   {
+    "week": 0,
+    "done_this_week": 0.0,
+    "overdue_weighted_km": 258.8,
+    "mean_tgi": 70.05,
+    "segments_below_threshold": 76,
+    "segments_urgent": 24
+   },
+   {
+    "week": 1,
+    "blocks": 22,
+    "done_this_week": 19.9,
+    "overdue_weighted_km": 255.4,
+    "mean_tgi": 70.96,
+    "segments_below_threshold": 74,
+    "segments_urgent": 22
+   },
+   {
+    "week": 2,
+    "blocks": 21,
+    "done_this_week": 19.4,
+    "overdue_weighted_km": 254.5,
+    "mean_tgi": 72.01,
+    "segments_below_threshold": 72,
+    "segments_urgent": 17
+   },
+   {
+    "week": 3,
+    "blocks": 20,
+    "done_this_week": 17.0,
+    "overdue_weighted_km": 256.0,
+    "mean_tgi": 72.78,
+    "segments_below_threshold": 68,
+    "segments_urgent": 11
+   },
+   {
+    "week": 4,
+    "blocks": 20,
+    "done_this_week": 19.6,
+    "overdue_weighted_km": 266.4,
+    "mean_tgi": 73.86,
+    "segments_below_threshold": 63,
+    "segments_urgent": 11
+   },
+   {
+    "week": 5,
+    "blocks": 19,
+    "done_this_week": 19.5,
+    "overdue_weighted_km": 273.4,
+    "mean_tgi": 74.65,
+    "segments_below_threshold": 59,
+    "segments_urgent": 7
+   },
+   {
+    "week": 6,
+    "blocks": 21,
+    "done_this_week": 18.3,
+    "overdue_weighted_km": 286.1,
+    "mean_tgi": 75.22,
+    "segments_below_threshold": 54,
+    "segments_urgent": 3
+   },
+   {
+    "week": 7,
+    "blocks": 20,
+    "done_this_week": 18.0,
+    "overdue_weighted_km": 294.4,
+    "mean_tgi": 75.92,
+    "segments_below_threshold": 48,
+    "segments_urgent": 2
+   },
+   {
+    "week": 8,
+    "blocks": 20,
+    "done_this_week": 19.1,
+    "overdue_weighted_km": 302.1,
+    "mean_tgi": 76.56,
+    "segments_below_threshold": 45,
+    "segments_urgent": 1
+   },
+   {
+    "week": 9,
+    "blocks": 20,
+    "done_this_week": 19.5,
+    "overdue_weighted_km": 305.9,
+    "mean_tgi": 77.22,
+    "segments_below_threshold": 38,
+    "segments_urgent": 3
+   },
+   {
+    "week": 10,
+    "blocks": 19,
+    "done_this_week": 18.0,
+    "overdue_weighted_km": 312.5,
+    "mean_tgi": 77.74,
+    "segments_below_threshold": 36,
+    "segments_urgent": 1
+   }
+  ]
+ }
+]
